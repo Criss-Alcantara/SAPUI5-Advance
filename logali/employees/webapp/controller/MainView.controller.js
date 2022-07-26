@@ -100,7 +100,7 @@ sap.ui.define([
 
         };
 
-        function onHideCity(){
+        function onHideCity() {
 
             var oJSONModelConfig = this.getView().getModel("Config");
 
@@ -110,6 +110,79 @@ sap.ui.define([
 
             oJSONModelConfig.setProperty("/visibleBtnHideCity", false);
         };
+
+        function showOrders(oEvent) {
+
+            var ordersTable = this.getView().byId("ordersTable");
+
+            ordersTable.destroyItems();
+
+            var itemPressed = oEvent.getSource();
+
+            var oContext = itemPressed.getBindingContext("Employees");
+
+            var objectContext = oContext.getObject();
+
+            var orders = objectContext.Orders;
+
+            var ordersItems = [];
+
+            for (var i in orders) {
+                ordersItems.push(new sap.m.ColumnListItem({
+                    cells: [
+                        new sap.m.Label({ text: orders[i].OrderID }),
+                        new sap.m.Label({ text: orders[i].Freight }),
+                        new sap.m.Label({ text: orders[i].ShipAddress })
+                    ]
+                }));
+            }
+
+            var newTable = new sap.m.Table({
+                width: "auto",
+                columns: [
+                    new sap.m.Column({ header: new sap.m.Label({ text: "{i18n>orderID}" }) }),
+                    new sap.m.Column({ header: new sap.m.Label({ text: "{i18n>freight}" }) }),
+                    new sap.m.Column({ header: new sap.m.Label({ text: "{i18n>shipAddress}" }) })
+                ],
+                items: ordersItems
+            }).addStyleClass("sapUiSmallMargin");
+
+            ordersTable.addItem(newTable);
+
+            var newTableJSON = new sap.m.Table(); newTableJSON.setWidth("auto"); newTableJSON.addStyleClass("sapUiSmallMargin");
+            
+            var labelOrderID = new sap.m.Label(); labelOrderID.bindProperty("text", "i18n>orderID");
+
+            var columnOrderID = new sap.m.Column(); columnOrderID.setHeader(labelOrderID); newTableJSON.addColumn(columnOrderID);
+
+            var labelFreight = new sap.m.Label(); labelFreight.bindProperty("text", "i18n>freight");
+            
+            var columnFreight = new sap.m.Column(); columnFreight.setHeader(labelFreight); newTableJSON.addColumn(columnFreight);
+            
+            var labelShipAddress = new sap.m.Label(); labelShipAddress.bindProperty("text", "i18n>shipAddress");
+            
+            var columnShipAddress = new sap.m.Column(); columnShipAddress.setHeader(labelShipAddress); newTableJSON.addColumn(columnShipAddress);
+            
+            var cellOrderID = new sap.m.Label(); cellOrderID.bindProperty("text", "Employees>OrderID");
+
+            var cellFreight = new sap.m.Label(); cellFreight.bindProperty("text", "Employees>Freight");
+            
+            var cellShipAddress = new sap.m.Label(); cellShipAddress.bindProperty("text", "Employees>ShipAddress");
+            
+            var columnListItem = new sap.m.ColumnListItem(); columnListItem.addCell(cellOrderID); columnListItem.addCell(cellFreight); columnListItem.addCell(cellShipAddress);
+            
+            var oBindingInfo = {
+                model: "Employees",
+                path: "Orders",
+                template: columnListItem
+            };
+
+            newTableJSON.bindAggregation("items", oBindingInfo);
+            
+            newTableJSON.bindElement("Employees>" + oContext.getPath());
+
+            ordersTable.addItem(newTableJSON);
+        }
 
         var Main = Controller.extend("logaligroup.employees.controller.MainView", {});
 
@@ -136,6 +209,7 @@ sap.ui.define([
         Main.prototype.showPostalCode = showPostalCode;
         Main.prototype.onShowCity = onShowCity;
         Main.prototype.onHideCity = onHideCity;
+        Main.prototype.showOrders = showOrders;
 
         return Main;
     });

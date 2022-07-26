@@ -47,7 +47,7 @@
                                     </Column>
                                     </columns>
                                     <items>
-                                        <ColumnListItem id="col_listm" type="Active" press="showPostalCode">
+                                        <ColumnListItem id="col_listm" type="Active" press="showOrders">
                                             <cells>
                                                 <Label id="l_emp_id" text="{Employees>EmployeeID}"/>
                                                 <Label id="l_emp_name" text="{Employees>LastName}, {Employees>FirstName}"/>
@@ -57,6 +57,7 @@
                                         </ColumnListItem>
                                     </items>
                                 </Table>
+                                <HBox id="ordersTable"></HBox>
                             </Panel>
                         </HBox>
                     </content>
