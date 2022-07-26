@@ -1,20 +1,19 @@
 <mvc:View controllerName="logaligroup.employees.controller.MainView"
-    xmlns:mvc="sap.ui.core.mvc" 
-          displayBlock="true" 
-          xmlns="sap.m"
-          xmlns:core="sap.ui.core">
-	<Shell id="shell">
-		<App id="app">
-			<pages>
-				<Page id="page" title="{i18n>title}">
-					<content>
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}">
+                    <content>
                         <HBox id="hbox1">
                             <Label id="labelEmployee" labelFor="inputEmployee" text="{i18n>labelEmployee}" class="sapUiSmallMargin"/>
-                            <Input id="inputEmployee" value="{/EmployeeId}" maxLength="6" width="200px" class="sapUiSmallMarginEnd"/>
+                            <Input id="inputEmployee" value="{Countries>/EmployeeId}" maxLength="6" width="200px" class="sapUiSmallMarginEnd"/>
                             <Label id="labelCountry" labelFor="slCountry" text="{i18n>labelCountry}" class="sapUiSmallMargin" visible="true"/>
-                            <Select id="slCountry" selectedKey="{/CountryKey}" forceSelection="false" items="{/ListCountry}" visible="true">
+                            <Select id="slCountry" selectedKey="{Countries>/CountryKey}" forceSelection="false" items="{Countries>/ListCountry}" visible="true">
                                 <items>
-                                    <core:Item id="item1" key="{Key}" text="{Text}"/>
+                                    <core:Item id="item1" key="{Countries>Key}" text="{Countries>Text}"/>
                                 </items>
                             </Select>
                             <Button id="btnFilter" text="{i18n>btnFilter}" icon="sap-icon://search" press="onFilter" class="sapUiSmallMarginEnd"/>
@@ -22,24 +21,26 @@
                         </HBox>
                         <HBox id="hbox2">
                             <Panel id="panel1">
-                                <Table id="tableEmployee" items="{/Employees}">
+                                <Button id="btnShowCity" text="{i18n>showCity}" visible="{Config>/visibleBtnShowCity}" press="onShowCity"/>
+                                <Button id="btnHideCity" text="{i18n>hideCity}" visible="{Config>/visibleBtnHideCity}" press="onHideCity"/>
+                                <Table id="tableEmployee" items="{Employees>/}">
                                     <columns>
-                                        <Column id="c_id"> 
+                                        <Column id="c_id" visible="{Config>/visibleID}"> 
                                             <header>
-                                                <Label id="l_id" text="{i18n>tableId}"/>
+                                                <Label id="_id" text="{i18n>tableId}"/>
                                             </header>
                                         </Column>
-                                        <Column id="c_name"> 
+                                        <Column id="c_name" visible="{Config>/visibleName}"> 
                                             <header>
                                                 <Label id="l_name" text="{i18n>tableName}"/>
                                             </header>
                                         </Column>
-                                        <Column id="c_country"> 
+                                        <Column id="c_country" visible="{Config>/visibleCountry}"> 
                                             <header>
                                                 <Label id="l_country" text="{i18n>tableCountry}"/>
                                             </header>
                                         </Column>
-                                        <Column id="c_city"> 
+                                        <Column id="c_city" visible="{Config>/visibleCity}"> 
                                             <header>
                                                 <Label id="l_city" text="{i18n>tableCity}"/>
                                             </header>
@@ -48,19 +49,19 @@
                                     <items>
                                         <ColumnListItem id="col_listm" type="Active" press="showPostalCode">
                                             <cells>
-                                                <Label id="l_emp_id" text="{EmployeeID}"/>
-                                                <Label id="l_emp_name" text="{LastName}, {FirstName}"/>
-                                                <Label id="l_emp_country" text="{Country}"/>
-                                                <Label id="l_emp_city" text="{City}"/>
+                                                <Label id="l_emp_id" text="{Employees>EmployeeID}"/>
+                                                <Label id="l_emp_name" text="{Employees>LastName}, {Employees>FirstName}"/>
+                                                <Label id="l_emp_country" text="{Employees>Country}"/>
+                                                <Label id="l_emp_city" text="{Employees>City}"/>
                                             </cells>
                                         </ColumnListItem>
                                     </items>
                                 </Table>
                             </Panel>
-                         </HBox>
+                        </HBox>
                     </content>
-				</Page>
-			</pages>
-		</App>
-	</Shell>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
 </mvc:View>
