@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+    <Panel id="p_1">
+        <Button id="btnShowCity" text="{i18n>showCity}" visible="{Config>/visibleBtnShowCity}" press="onShowCity"/>
+        <Button id="btnHideCity" text="{i18n>hideCity}" visible="{Config>/visibleBtnHideCity}" press="onHideCity"/>
+        <Table id="tableEmployee" items="{Employees>/}">
+            <columns>
+                <Column id="cf_id" visible="{Config>/visibleID}"> 
+                    <header>
+                        <Label id="lf_id" text="{i18n>tableId}"/>
+                    </header>
+                </Column>
+                <Column id="cf_name" visible="{Config>/visibleName}"> 
+                    <header>
+                        <Label id="lf_name" text="{i18n>tableName}"/>
+                    </header>
+                </Column>
+                <Column id="cf_country" visible="{Config>/visibleCountry}"> 
+                     <header>
+                        <Label id="lf_country" text="{i18n>tableCountry}"/>
+                    </header>
+                </Column>
+                <Column id="cf_city" visible="{Config>/visibleCity}"> 
+                    <header>
+                        <Label id="lf_city" text="{i18n>tableCity}"/>
+                    </header>
+                </Column>
+                <Column id="cf_details" width="100px"> 
+                    <header>
+                        <Label id="lf_details" text="{i18n>tableShowDetails}"/>
+                    </header>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem id="clf_1" >
+                    <cells>
+                        <Label id="lf_eid" text="{Employees>EmployeeID}"/>
+                        <Label id="lf_ename" text="{Employees>LastName}, {Employees>FirstName}"/>
+                        <Label id="lf_ecountry" text="{Employees>Country}"/>
+                        <Label id="lf_ecity" text="{Employees>City}"/>
+                        <core:Icon id="i_show" src="sap-icon://show" press="showOrders"></core:Icon>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <HBox id="ordersTable"></HBox>
+    </Panel>
+</core:FragmentDefinition>
