@@ -31,7 +31,7 @@
                 </Column>
             </columns>
             <items>
-                <ColumnListItem id="clf_1" >
+                <ColumnListItem id="clf_1" type="Navigation" press="showEmployee">
                     <cells>
                         <Label id="lf_eid" text="{Employees>EmployeeID}"/>
                         <Label id="lf_ename" text="{Employees>LastName}, {Employees>FirstName}"/>
