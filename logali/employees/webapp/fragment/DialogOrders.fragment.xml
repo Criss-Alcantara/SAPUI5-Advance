@@ -1,37 +1,10 @@
 <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
-    <Dialog id="d_orders" title="{i18n>orders}">
+    <Dialog id="_IDGenDialog1" title="{i18n>orders}">
         <content>
-            <Table id="t_orders" items="{odataNorthwind>Orders}" width="700px">
-                <columns>
-                    <Column id="cd_id" >
-                        <header>
-                            <Label id="ld_id" text="{i18n>orderID}"/>
-                        </header>
-                    </Column>
-                    <Column id="cd_frei" >
-                        <header>
-                            <Label id="ld_frei" text="{i18n>freight}"/>
-                        </header>
-                    </Column>
-                    <Column id="cd_addr" >
-                        <header>
-                            <Label id="ld_addr" text="{i18n>shipAddress}"/>
-                        </header>
-                    </Column>
-                </columns>
-                <items>
-                    <ColumnListItem id="cld_1" >
-                        <cells>
-                            <Label id="ld_eid" text="{odataNorthwind>OrderID}"/>
-                            <Label id="ld_efrei" text="{odataNorthwind>Freight}"/>
-                            <Label id="ld_eaddr" text="{odataNorthwind>ShipAddress}"/>
-                        </cells>
-                    </ColumnListItem>
-                </items>
-            </Table>
+            <core:Fragment fragmentName="logaligroup.employees.fragment.TableOrders" type="XML"/>
         </content>
         <endButton>
-            <Button id="bd_close" text="{i18n>close}" press="onCloseOrders"/>
+            <Button id="_IDGenButton1" text="{i18n>close}" press="onCloseOrders"/>
         </endButton>
     </Dialog>
 </core:FragmentDefinition>
