@@ -2,7 +2,7 @@
     <Panel id="p_1">
         <Button id="btnShowCity" text="{i18n>showCity}" visible="{Config>/visibleBtnShowCity}" press="onShowCity"/>
         <Button id="btnHideCity" text="{i18n>hideCity}" visible="{Config>/visibleBtnHideCity}" press="onHideCity"/>
-        <Table id="tableEmployee" items="{Employees>/}">
+        <Table id="tableEmployee" items="{odataNorthwind>/Employees}">
             <columns>
                 <Column id="cf_id" visible="{Config>/visibleID}"> 
                     <header>
@@ -33,10 +33,10 @@
             <items>
                 <ColumnListItem id="clf_1" type="Navigation" press="showEmployee">
                     <cells>
-                        <Label id="lf_eid" text="{Employees>EmployeeID}"/>
-                        <Label id="lf_ename" text="{Employees>LastName}, {Employees>FirstName}"/>
-                        <Label id="lf_ecountry" text="{Employees>Country}"/>
-                        <Label id="lf_ecity" text="{Employees>City}"/>
+                        <Label id="lf_eid" text="{odataNorthwind>EmployeeID}"/>
+                        <Label id="lf_ename" text="{odataNorthwind>LastName}, {odataNorthwind>FirstName}"/>
+                        <Label id="lf_ecountry" text="{odataNorthwind>Country}"/>
+                        <Label id="lf_ecity" text="{odataNorthwind>City}"/>
                         <core:Icon id="i_show" src="sap-icon://show" press="showOrders"></core:Icon>
                     </cells>
                 </ColumnListItem>
