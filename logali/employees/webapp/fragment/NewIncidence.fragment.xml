@@ -7,20 +7,20 @@
                                    ${Inc_Model>status}==='2' ? 'decline' : '' }"/>
                 <Title id="_IDGenTitle1" text="{i18n>incidence}  {Inc_Model>index} {path : 'Inc_Model>date', formatter:'.Formatter.dateFormat'}"></Title>
                 <ToolbarSpacer id="_IDGenToolbarSpacer1"/>
-                <Button id="_IDGenButton1" icon="sap-icon://save" press="onSaveIncidence"/>
+                <Button id="_IDGenButton1" icon="sap-icon://save" press="onSaveIncidence" enabled="{= ${Inc_Model>EnabledSave} === true}"/>
                 <core:Icon id="_IDGenIcon2" src="delete" press="onDeleteIncidence"/>
             </Toolbar>
         </headerToolbar>
         <content>
             <HBox id="_IDGenHBox1" >
                 <VBox id="_IDGenVBox1" class="sapUiSmallMarginEnd">
-                    <Text id="_IDGenText1" text="{i18n>incidenceDate}"/>
-                    <DatePicker id="_IDGenDatePicker1" dateValue="{Inc_Model>date}"/>
+                    <Label id="_IDGenText1" text="{i18n>incidenceDate}" required="true"/>
+                    <DatePicker id="_IDGenDatePicker1" dateValue="{Inc_Model>date}" change="updateIncidenceCreationDate" valueState="{Inc_Model>CreationDateState}"/>
                 </VBox>
                 
                 <VBox id="_IDGenVBox2" visible="{= ${Inc_Model>date} !== '' &amp;&amp; ${Inc_Model>date} !== undefined}" class="sapUiSmallMarginEnd">
-                    <Text id="_IDGenText2" text="{i18n>incidenceReason}"/>
-                    <Input id="_IDGenInput1"></Input> 
+                    <Label id="_IDGenText2" text="{i18n>incidenceReason}" required="true"/>
+                    <Input id="_IDGenInput1" value="{Inc_Model>Reason}" change="updateIncidenceReason" valueState="{Inc_Model>ReasonState}"></Input> 
                 </VBox>
                 <VBox id="_IDGenVBox3" visible="{= ${Inc_Model>date} !== '' &amp;&amp; ${Inc_Model>date} !== undefined}">
                     <Text id="_IDGenText3" text="{i18n>incidenceType}"/>
