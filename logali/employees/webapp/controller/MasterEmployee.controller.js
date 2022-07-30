@@ -1,5 +1,5 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "logaligroup/employees/controller/Base.controller",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
 ],
@@ -8,7 +8,7 @@ sap.ui.define([
      * @param {typeof sap.ui.model.Filter} Filter
      * @param {typeof sap.ui.model.FilterOperator} FilterOperator
      */
-    function (Controller, Filter, FilterOperator) {
+    function (Base, Filter, FilterOperator) {
         "use strict";
 
         function onInit() {
@@ -122,7 +122,7 @@ sap.ui.define([
             });
         };
 
-        var Main = Controller.extend("logaligroup.employees.controller.MainView", {});
+        var Main = Base.extend("logaligroup.employees.controller.MainView", {});
 
         Main.prototype.onValidate = function () {
 

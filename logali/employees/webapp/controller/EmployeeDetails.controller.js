@@ -1,8 +1,8 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
+    "logaligroup/employees/controller/Base.controller",
     "logaligroup/employees/model/formatter",
     "sap/m/MessageBox"
-], function (Controller, formatter, MessageBox) {
+], function (Base, formatter, MessageBox) {
 
     function onInit() {
         this._bus = sap.ui.getCore().getEventBus();
@@ -112,7 +112,7 @@ sap.ui.define([
         context.getModel().refresh();
     };
 
-    var EmployeeDetails = Controller.extend("logaligroup.employees.controller.EmployeeDetails", {});
+    var EmployeeDetails = Base.extend("logaligroup.employees.controller.EmployeeDetails", {});
 
     EmployeeDetails.prototype.onInit = onInit;
     EmployeeDetails.prototype.Formatter = formatter;
