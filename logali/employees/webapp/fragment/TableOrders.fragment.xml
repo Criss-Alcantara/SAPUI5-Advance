@@ -18,7 +18,7 @@
             </Column>
         </columns>
         <items>
-            <ColumnListItem id="_IDGenColumnListItem1">
+            <ColumnListItem id="_IDGenColumnListItem1" type="Navigation" press="toOrderDetails">
                 <cells>
                     <Label id="_IDGenLabel4" text="{odataNorthwind>OrderID}"/>
                     <Label id="_IDGenLabel5" text="{odataNorthwind>Freight}"/>

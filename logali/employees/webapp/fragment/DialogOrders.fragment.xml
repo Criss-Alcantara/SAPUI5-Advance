@@ -4,7 +4,7 @@
             <core:Fragment fragmentName="logaligroup.employees.fragment.TableOrders" type="XML"/>
         </content>
         <endButton>
-            <Button id="_IDGenButton1" text="{i18n>close}" press="onCloseOrders"/>
+            <Button  text="{i18n>close}" press="onCloseOrders"/>
         </endButton>
     </Dialog>
 </core:FragmentDefinition>
